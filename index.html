@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoMonitor - Simulación Neonatal de Alta Fidelidad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        medical: {
+                            dark: '#0f172a',
+                            green: '#22c55e',
+                            yellow: '#eab308',
+                            blue: '#3b82f6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .ecg-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 3s linear infinite;
+        }
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        .monitor-glow {
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-blue-600 text-white p-1.5 rounded-lg">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <span class="text-xl font-bold text-slate-900 tracking-tight">NeoMonitor</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-semibold text-slate-600">
+                <a href="#funciona" class="hover:text-blue-600 transition">Cómo funciona</a>
+                <a href="#features" class="hover:text-blue-600 transition">Características</a>
+                <a href="#testimonios" class="hover:text-blue-600 transition">Testimonios</a>
+            </div>
+            <div class="flex gap-3">
+                <a href="#" class="hidden sm:block px-4 py-2 text-sm font-bold text-slate-600 hover:text-blue-600 transition">Ingresar</a>
+                <a href="#precios" class="px-5 py-2 text-sm font-bold bg-blue-600 text-white rounded-full hover:bg-blue-700 transition shadow-lg shadow-blue-600/20">
+                    Comprar Licencia
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 lg:pt-40 lg:pb-28 px-6 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
+            
+            <!-- Left Content -->
+            <div class="text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide mb-6 animate-pulse">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    Versión 2.0 Disponible
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.15] mb-6">
+                    Simulación Neonatal de <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Alta Fidelidad</span> en tu Bolsillo.
+                </h1>
+                <p class="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                    Transformá cualquier tablet o celular en un monitor multiparamétrico realista. Sin cables costosos, sin maniquíes complejos. Solo docencia pura.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#demo" class="px-8 py-4 bg-slate-900 text-white rounded-xl font-bold text-lg hover:bg-slate-800 transition flex items-center justify-center gap-2 shadow-xl hover:-translate-y-1">
+                        <i class="fa-solid fa-play"></i> Probar Demo Gratis
+                    </a>
+                    <a href="#video" class="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-bold text-lg hover:bg-slate-50 transition flex items-center justify-center gap-2 hover:-translate-y-1">
+                        <i class="fa-solid fa-circle-play text-blue-600"></i> Ver Video
+                    </a>
+                </div>
+                <div class="mt-8 flex items-center justify-center lg:justify-start gap-6 text-sm text-slate-500 font-medium">
+                    <span class="flex items-center gap-1"><i class="fa-brands fa-apple text-lg"></i> iOS</span>
+                    <span class="flex items-center gap-1"><i class="fa-brands fa-android text-lg"></i> Android</span>
+                    <span class="flex items-center gap-1"><i class="fa-brands fa-windows text-lg"></i> Web</span>
+                </div>
+            </div>
+
+            <!-- Right Visual (CSS Mockup of the App) -->
+            <div class="relative mt-12 lg:mt-0 perspective-1000">
+                <!-- Decorative blurred blobs -->
+                <div class="absolute -top-10 -right-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+                <div class="absolute -bottom-10 -left-10 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+
+                <!-- Main Tablet Mockup -->
+                <div class="relative bg-slate-900 rounded-2xl border-8 border-slate-800 shadow-2xl p-1 overflow-hidden transform rotate-y-6 hover:rotate-y-0 transition duration-700 ease-out z-20">
+                    <!-- Top Bar -->
+                    <div class="bg-black/50 px-4 py-2 flex justify-between text-xs text-slate-400 font-mono">
+                        <span>NEONATAL CAMA: 01</span>
+                        <div class="flex gap-3">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <i class="fa-solid fa-wifi"></i>
+                            <i class="fa-solid fa-battery-full"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Monitor Screen Content -->
+                    <div class="grid grid-cols-3 h-64 bg-slate-950 p-4 gap-1 relative">
+                        <!-- Left: Waves -->
+                        <div class="col-span-2 flex flex-col justify-around border-r border-slate-800 pr-4">
+                            <!-- ECG -->
+                            <div class="h-1/2 relative border-b border-slate-800/50">
+                                <span class="text-green-500 font-mono text-xs absolute top-0 left-0">II</span>
+                                <svg class="w-full h-full" viewBox="0 0 200 50">
+                                    <path d="M0 25 L10 25 L15 10 L20 40 L25 25 L35 25 L40 15 L45 35 L50 25 L200 25" fill="none" stroke="#22c55e" stroke-width="2" class="ecg-line" />
+                                </svg>
+                            </div>
+                            <!-- Pleth -->
+                            <div class="h-1/2 relative pt-2">
+                                <span class="text-yellow-500 font-mono text-xs absolute top-2 left-0">Pleth</span>
+                                <svg class="w-full h-full" viewBox="0 0 200 50">
+                                    <path d="M0 40 Q10 10 20 40 T40 40 T60 40 T80 40 T100 40 T120 40" fill="none" stroke="#eab308" stroke-width="2" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Right: Numbers -->
+                        <div class="col-span-1 flex flex-col justify-around pl-4">
+                            <!-- HR -->
+                            <div class="text-right">
+                                <span class="text-green-600 text-xs font-mono block">FC</span>
+                                <span class="text-6xl font-bold text-green-500 font-mono leading-none tracking-tighter">145</span>
+                            </div>
+                            <!-- SpO2 -->
+                            <div class="text-right mt-4 border-t border-slate-800/50 pt-2">
+                                <span class="text-yellow-600 text-xs font-mono block">SpO2</span>
+                                <div class="flex justify-end items-end gap-1">
+                                    <span class="text-6xl font-bold text-yellow-500 font-mono leading-none tracking-tighter">94</span>
+                                    <span class="text-xl text-yellow-500 font-mono mb-2">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bottom Bar -->
+                    <div class="bg-slate-800 px-4 py-2 flex justify-between items-center">
+                         <div class="flex gap-2">
+                             <div class="w-20 h-6 bg-slate-700 rounded animate-pulse"></div>
+                             <div class="w-20 h-6 bg-slate-700 rounded"></div>
+                         </div>
+                         <div class="text-xs text-slate-400 font-mono">18:42</div>
+                    </div>
+                </div>
+
+                <!-- Phone Mockup (Controller) -->
+                <div class="absolute -bottom-10 -left-6 w-32 bg-slate-900 rounded-3xl border-4 border-slate-800 shadow-2xl overflow-hidden z-30 transform -rotate-6 hover:rotate-0 transition duration-500 hidden md:block">
+                    <div class="h-6 bg-black w-full flex justify-center items-center"><div class="w-10 h-1 bg-slate-800 rounded-full"></div></div>
+                    <div class="p-3">
+                        <div class="text-center text-xs text-slate-400 mb-2">Control</div>
+                        <!-- Slider UI Simulation -->
+                        <div class="bg-slate-800 rounded-lg p-2 mb-2">
+                            <div class="flex justify-between text-[8px] text-green-400 mb-1">
+                                <span>FC</span>
+                                <span>145</span>
+                            </div>
+                            <div class="w-full h-1 bg-slate-700 rounded-full relative">
+                                <div class="absolute left-0 top-0 h-1 bg-green-500 w-3/4 rounded-full"></div>
+                                <div class="absolute left-3/4 top-1/2 -mt-1 w-2 h-2 bg-white rounded-full shadow"></div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-1 mb-2">
+                             <div class="bg-indigo-900/50 p-1.5 rounded text-[8px] text-center text-indigo-300 border border-indigo-700">Llanto</div>
+                             <div class="bg-red-900/50 p-1.5 rounded text-[8px] text-center text-red-300 border border-red-700">Quejido</div>
+                        </div>
+                         <div class="bg-blue-600 w-full py-1 rounded text-[8px] text-center text-white font-bold">Enviar</div>
+                    </div>
+                    <div class="h-4 w-full"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Value Proposition -->
+    <section class="bg-white py-20 border-t border-slate-100">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8">Basta de gritar los signos vitales</h2>
+            <div class="flex flex-col md:flex-row items-center gap-8 justify-center bg-slate-50 p-8 rounded-2xl border border-slate-100">
+                <div class="flex-1 text-right md:border-r md:border-slate-200 md:pr-8">
+                    <p class="text-red-500 font-bold italic text-lg">"¡Imaginate que satura 85%!"</p>
+                    <p class="text-sm text-slate-400 mt-1">Simulación Tradicional</p>
+                </div>
+                <div class="flex-0 p-2 bg-white rounded-full border border-slate-200 text-slate-300 shadow-sm">
+                    <i class="fa-solid fa-arrow-right md:hidden"></i>
+                    <i class="fa-solid fa-arrow-right hidden md:block"></i>
+                </div>
+                <div class="flex-1 text-left md:pl-8">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-volume-high text-blue-500 animate-pulse"></i>
+                        <span class="text-3xl font-mono font-bold text-yellow-500">85<span class="text-sm">%</span></span>
+                        <span class="text-slate-900 font-bold">Visual y Auditivo</span>
+                    </div>
+                    <p class="text-sm text-slate-400 mt-1">Con NeoMonitor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section id="funciona" class="py-20 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <span class="text-blue-600 font-bold tracking-wider text-sm uppercase">Simpleza total</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Listo para simular en 3 pasos</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-12 relative">
+            <!-- Connecting Line (Desktop) -->
+            <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-slate-200 -z-10"></div>
+
+            <!-- Step 1 -->
+            <div class="text-center bg-white p-6 rounded-xl hover:shadow-xl transition duration-300">
+                <div class="w-24 h-24 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 border-4 border-white shadow-lg">1</div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">Abrí el Monitor</h3>
+                <p class="text-slate-600">Usá una tablet, notebook o PC conectada a un TV. Entrá a la web y elegí "Modo Monitor".</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="text-center bg-white p-6 rounded-xl hover:shadow-xl transition duration-300">
+                <div class="w-24 h-24 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 border-4 border-white shadow-lg">2</div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">Abrí el Control</h3>
+                <p class="text-slate-600">Desde tu celular, entrá a la misma web y elegí "Modo Control".</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="text-center bg-white p-6 rounded-xl hover:shadow-xl transition duration-300">
+                <div class="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 border-4 border-white shadow-lg">3</div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">¡Sincronizá!</h3>
+                <p class="text-slate-600">Ingresá el código de 4 dígitos que aparece en el monitor y listo. Tenés el control total.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="bg-slate-900 py-24 text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Diseñado por Neonatólogos,<br>para Neonatólogos.</h2>
+                    <p class="text-slate-400 text-lg mb-8">Sabemos lo que pasa en una recepción real. Por eso cada detalle está pensado para generar estrés controlado y aprendizaje efectivo.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-blue-600/20 flex items-center justify-center text-blue-400 text-xl shrink-0">
+                                <i class="fa-solid fa-sliders"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Modificación Dinámica</h4>
+                                <p class="text-slate-400 text-sm mt-1">Ajustá la frecuencia cardíaca y la saturación con sliders suaves. La transición es progresiva, no brusca.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-red-600/20 flex items-center justify-center text-red-400 text-xl shrink-0">
+                                <i class="fa-solid fa-bell"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Alarmas Inteligentes</h4>
+                                <p class="text-slate-400 text-sm mt-1">Alarmas de prioridad alta y baja. Silencialas desde el control o dejá que el alumno sufra un poco (pedagógicamente).</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-purple-600/20 flex items-center justify-center text-purple-400 text-xl shrink-0">
+                                <i class="fa-solid fa-baby"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Sonidos Ambientales</h4>
+                                <p class="text-slate-400 text-sm mt-1">Botones rápidos para "Llanto vigoroso" o "Quejido espiratorio". El audio sale del monitor (tablet/PC).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature Image Placeholder -->
+                <div class="bg-slate-800 rounded-2xl p-2 shadow-2xl border border-slate-700">
+                    <div class="aspect-video bg-slate-950 rounded-xl relative overflow-hidden flex items-center justify-center group">
+                        <!-- Simulated Dark Mode Interface Snapshot -->
+                        <div class="text-center opacity-50 group-hover:opacity-100 transition">
+                            <i class="fa-solid fa-image text-4xl mb-2 text-slate-600"></i>
+                            <p class="text-slate-500">Espacio para Captura de Pantalla "Modo Oscuro"</p>
+                        </div>
+                        
+                        <!-- Decorative UI elements mimicking the app -->
+                        <div class="absolute top-4 left-4 w-full pr-8">
+                             <div class="h-20 border-b border-slate-800 mb-4 flex items-end pb-2">
+                                <div class="w-full h-12 bg-gradient-to-t from-green-500/20 to-transparent"></div>
+                             </div>
+                             <div class="flex justify-end gap-8">
+                                 <div class="text-right">
+                                     <div class="text-4xl font-bold text-green-500">160</div>
+                                 </div>
+                                 <div class="text-right">
+                                     <div class="text-4xl font-bold text-yellow-500">98<span class="text-lg">%</span></div>
+                                 </div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="precios" class="py-24 bg-blue-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Precios accesibles</h2>
+                <p class="text-slate-600 mt-4 text-lg">Nuestro objetivo es que cada instructor pueda tener esta herramienta. Una licencia cuesta menos que una guardia.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Free Plan -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-slate-100 flex flex-col">
+                    <h3 class="text-xl font-bold text-slate-900">Versión Demo</h3>
+                    <div class="my-6">
+                        <span class="text-4xl font-bold text-slate-900">Gratis</span>
+                    </div>
+                    <p class="text-slate-500 mb-8">Ideal para conocer la herramienta y hacer prácticas cortas.</p>
+                    
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-center gap-3 text-slate-700">
+                            <i class="fa-solid fa-check text-green-500"></i> Todas las funciones activas
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-700">
+                            <i class="fa-solid fa-check text-green-500"></i> App Monitor + App Control
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-400">
+                            <i class="fa-solid fa-clock text-orange-400"></i> Límite de 5 minutos por sesión
+                        </li>
+                    </ul>
+
+                    <a href="#" class="w-full py-4 rounded-xl border-2 border-slate-200 text-slate-700 font-bold text-center hover:border-slate-400 hover:text-slate-900 transition">
+                        Comenzar Gratis
+                    </a>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="bg-blue-600 rounded-3xl p-8 shadow-xl text-white relative flex flex-col transform md:-translate-y-4">
+                    <div class="absolute top-0 right-0 bg-yellow-400 text-yellow-900 text-xs font-bold px-4 py-1.5 rounded-bl-xl rounded-tr-2xl">POPULAR</div>
+                    <h3 class="text-xl font-bold">Licencia Anual</h3>
+                    <div class="my-6 flex items-baseline gap-1">
+                        <span class="text-4xl font-bold">$25.000</span>
+                        <span class="text-blue-200 text-sm">/año (ARS)</span>
+                    </div>
+                    <p class="text-blue-100 mb-8">Para instructores comprometidos y cursos profesionales.</p>
+                    
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-center gap-3">
+                            <div class="bg-blue-500 rounded-full p-1"><i class="fa-solid fa-check text-xs"></i></div>
+                            Sesiones de tiempo ilimitado
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="bg-blue-500 rounded-full p-1"><i class="fa-solid fa-check text-xs"></i></div>
+                            Acceso a nuevas funciones
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="bg-blue-500 rounded-full p-1"><i class="fa-solid fa-check text-xs"></i></div>
+                            Soporte prioritario por WhatsApp
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="bg-blue-500 rounded-full p-1"><i class="fa-solid fa-check text-xs"></i></div>
+                            Factura C disponible
+                        </li>
+                    </ul>
+
+                    <a href="#" class="w-full py-4 rounded-xl bg-white text-blue-700 font-bold text-center hover:bg-blue-50 transition shadow-lg">
+                        Comprar Licencia Ahora
+                    </a>
+                    <p class="text-center text-xs text-blue-200 mt-4 opacity-70">Pago seguro vía Mercado Pago</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-6 text-center md:text-left md:flex justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
+                    <i class="fa-solid fa-heart-pulse text-blue-600"></i>
+                    <span class="text-white font-bold text-lg">NeoMonitor</span>
+                </div>
+                <p class="text-sm">Hecho con <i class="fa-solid fa-heart text-red-500 mx-1"></i> y código en Argentina.</p>
+            </div>
+            <div class="flex flex-col md:flex-row gap-6 md:gap-12 text-sm">
+                <a href="#" class="hover:text-white transition">Términos y Condiciones</a>
+                <a href="#" class="hover:text-white transition">Política de Privacidad</a>
+                <a href="#" class="hover:text-white transition">Contacto</a>
+            </div>
+        </div>
+        <div class="mt-8 text-center">
+             <p class="text-xs opacity-40 max-w-md mx-auto">"aplicación hecha con muchas ganas pero poco conocimiento. Úselo bajo su exclusiva responsabilidad." 😉</p>
+        </div>
+    </footer>
+
+</body>
+</html>
