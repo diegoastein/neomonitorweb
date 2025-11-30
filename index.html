@@ -287,9 +287,13 @@
                         </li>
                     </ul>
 
-                    <a href="#" class="w-full py-4 rounded-xl bg-white text-blue-700 font-bold text-center hover:bg-blue-50 transition shadow-lg">
-                        Comprar Licencia Ahora
-                    </a>
+                    <!-- Botón de Mercado Pago -->
+                    <div class="w-full flex justify-center [&>.mercadopago-button]:w-full [&>.mercadopago-button]:font-bold [&>.mercadopago-button]:rounded-xl">
+                        <script src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
+                        data-preference-id="109372-35478ed0-3cd6-4edb-8c71-976ebfcd2b4b" data-source="button">
+                        </script>
+                    </div>
+                    
                     <p class="text-center text-xs text-blue-200 mt-4 opacity-70">Pago seguro vía Mercado Pago</p>
                 </div>
             </div>
