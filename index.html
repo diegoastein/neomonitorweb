@@ -41,10 +41,14 @@
             <div class="hidden md:flex gap-8 text-sm font-semibold text-slate-600">
                 <a href="#funciona" class="hover:text-blue-600 transition">Cómo funciona</a>
                 <a href="#features" class="hover:text-blue-600 transition">Características</a>
-                <a href="#testimonios" class="hover:text-blue-600 transition">Testimonios</a>
             </div>
-            <div class="flex gap-3">
-                <a href="https://www.neomonitor.pro" class="hidden sm:block px-4 py-2 text-sm font-bold text-slate-600 hover:text-blue-600 transition">Ingresar</a>
+            <div class="flex items-center gap-4">
+                <!-- Instagram Destacado -->
+                <a href="https://instagram.com/neomonitor.pro" target="_blank" class="hidden sm:flex items-center gap-2 text-slate-600 hover:text-pink-600 font-semibold transition mr-2">
+                    <i class="fa-brands fa-instagram text-xl"></i>
+                    <span>@neomonitor.pro</span>
+                </a>
+                
                 <a href="#precios" class="px-5 py-2 text-sm font-bold bg-blue-600 text-white rounded-full hover:bg-blue-700 transition shadow-lg shadow-blue-600/20">
                     Comprar Licencia
                 </a>
@@ -58,10 +62,8 @@
             
             <!-- Left Content -->
             <div class="text-center lg:text-left">
-                <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide mb-6 animate-pulse">
-                    <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
-                    Versión 2.0 Disponible
-                </div>
+                <!-- Se eliminó el div de Versión 2.0 -->
+                
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.15] mb-6">
                     Simulación Neonatal de <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Alta Fidelidad</span> en tu Bolsillo.
                 </h1>
@@ -72,9 +74,7 @@
                     <a href="https://www.neomonitor.pro" class="px-8 py-4 bg-slate-900 text-white rounded-xl font-bold text-lg hover:bg-slate-800 transition flex items-center justify-center gap-2 shadow-xl hover:-translate-y-1">
                         <i class="fa-solid fa-play"></i> Probar Demo Gratis
                     </a>
-                    <a href="#video" class="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-bold text-lg hover:bg-slate-50 transition flex items-center justify-center gap-2 hover:-translate-y-1">
-                        <i class="fa-solid fa-circle-play text-blue-600"></i> Ver Video
-                    </a>
+                    <!-- Se eliminó el botón de Ver Video -->
                 </div>
                 <div class="mt-8 flex items-center justify-center lg:justify-start gap-6 text-sm text-slate-500 font-medium">
                     <span class="flex items-center gap-1"><i class="fa-brands fa-apple text-lg"></i> iOS</span>
@@ -277,10 +277,7 @@
                             <div class="bg-blue-500 rounded-full p-1"><i class="fa-solid fa-check text-xs"></i></div>
                             Acceso a nuevas funciones
                         </li>
-                        <li class="flex items-center gap-3">
-                            <div class="bg-blue-500 rounded-full p-1"><i class="fa-solid fa-check text-xs"></i></div>
-                            Soporte prioritario por WhatsApp
-                        </li>
+                        <!-- Eliminado: Soporte prioritario por WhatsApp -->
                         <li class="flex items-center gap-3">
                             <div class="bg-blue-500 rounded-full p-1"><i class="fa-solid fa-check text-xs"></i></div>
                             Factura C disponible
@@ -294,7 +291,12 @@
                         </script>
                     </div>
                     
-                    <p class="text-center text-xs text-blue-200 mt-4 opacity-70">Pago seguro vía Mercado Pago</p>
+                    <div class="text-center mt-4 space-y-2">
+                        <p class="text-sm font-semibold text-white bg-blue-700/50 py-2 px-3 rounded-lg border border-blue-500/30">
+                            Una vez realizado el pago, enviá el comprobante a <span class="text-yellow-300">info@neomonitor.pro</span>
+                        </p>
+                        <p class="text-xs text-blue-200 opacity-70">Pago seguro vía Mercado Pago</p>
+                    </div>
                 </div>
             </div>
         </div>
