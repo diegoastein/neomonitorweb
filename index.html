@@ -3,7 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoMonitor - Simulación Neonatal Gratuita de Alta Fidelidad</title>
+    
+    <!-- SEO Básico Dinámico -->
+    <title id="meta-title">NeoMonitor | Simulación Neonatal de Alta Fidelidad Gratuita</title>
+    <meta name="description" id="meta-description" content="Simulador neonatal profesional para entrenamiento en RCP. Convierte cualquier dispositivo en un monitor de signos vitales con control remoto. Gratis para instructores.">
+    <meta name="keywords" content="simulador neonatal, RCP neonatal, monitor signos vitales, reanimación neonatal, Diego Steinberg, simulação neonatal, neonatal simulator">
+    <meta name="author" content="Dr. Diego Steinberg">
+    <link rel="canonical" href="https://www.neomonitor.pro">
+
+    <!-- Hreflang para SEO Internacional -->
+    <link rel="alternate" hreflang="es" href="https://www.neomonitor.pro?lang=es" />
+    <link rel="alternate" hreflang="en" href="https://www.neomonitor.pro?lang=en" />
+    <link rel="alternate" hreflang="pt" href="https://www.neomonitor.pro?lang=pt" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="NeoMonitor - Simulador Neonatal">
+    <meta property="og:description" content="Entrenamiento de alta fidelidad sin equipos costosos. Usalo gratis en neomonitor.pro">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neomonitor.pro">
+
+    <!-- Datos Estructurados (JSON-LD) para Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "NeoMonitor",
+      "operatingSystem": "Web",
+      "applicationCategory": "EducationalApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Diego Steinberg"
+      }
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -26,6 +64,18 @@
             }
         }
     </script>
+    <style>
+        .perspective-1000 { perspective: 1000px; }
+        .rotate-y-6 { transform: rotateY(6deg); }
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob { animation: blob 7s infinite; }
+        .animation-delay-2000 { animation-delay: 2s; }
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden">
 
@@ -38,13 +88,21 @@
                 </div>
                 <span class="text-xl font-bold text-slate-900 tracking-tight">NeoMonitor</span>
             </div>
+            
+            <!-- Language Selector -->
+            <div class="flex items-center gap-2 bg-slate-100 p-1 rounded-lg">
+                <button onclick="changeLanguage('es')" id="btn-es" class="px-2 py-1 text-xs font-bold rounded transition bg-white shadow-sm">ES</button>
+                <button onclick="changeLanguage('en')" id="btn-en" class="px-2 py-1 text-xs font-bold rounded transition text-slate-500 hover:bg-white">EN</button>
+                <button onclick="changeLanguage('pt')" id="btn-pt" class="px-2 py-1 text-xs font-bold rounded transition text-slate-500 hover:bg-white">PT</button>
+            </div>
+
             <div class="hidden md:flex gap-8 text-sm font-semibold text-slate-600">
-                <a href="#funciona" class="hover:text-blue-600 transition">Cómo funciona</a>
-                <a href="#features" class="hover:text-blue-600 transition">Características</a>
-                <a href="#gratis" class="hover:text-blue-600 transition">Proyecto Gratuito</a>
+                <a href="#funciona" data-t="nav_how" class="hover:text-blue-600 transition">Cómo funciona</a>
+                <a href="#features" data-t="nav_features" class="hover:text-blue-600 transition">Características</a>
+                <a href="#gratis" data-t="nav_free" class="hover:text-blue-600 transition">Proyecto Gratuito</a>
             </div>
             <div class="flex items-center gap-4">
-                <a href="https://instagram.com/neomonitor.pro" target="_blank" class="flex items-center gap-2 text-slate-600 hover:text-pink-600 font-semibold transition">
+                <a href="https://instagram.com/neomonitor.pro" target="_blank" class="flex items-center gap-2 text-slate-600 hover:text-pink-600 font-semibold transition" aria-label="Instagram">
                     <i class="fa-brands fa-instagram text-xl"></i>
                     <span class="hidden sm:inline">@neomonitor.pro</span>
                 </a>
@@ -58,15 +116,15 @@
             
             <!-- Left Content -->
             <div class="text-center lg:text-left">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.15] mb-6">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.15] mb-6" data-t="hero_title">
                     Simulación Neonatal de <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Alta Fidelidad</span> Totalmente Gratis.
                 </h1>
-                <p class="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                <p class="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0" data-t="hero_desc">
                     Transformá cualquier tablet o celular en un monitor multiparamétrico realista. Sin suscripciones ni costos ocultos. Una herramienta libre para la docencia médica.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                     <a href="https://www.neomonitor.pro" class="px-8 py-4 bg-slate-900 text-white rounded-xl font-bold text-lg hover:bg-slate-800 transition flex items-center justify-center gap-2 shadow-xl hover:-translate-y-1">
-                        <i class="fa-solid fa-play"></i> Comenzar a usar ahora
+                        <i class="fa-solid fa-play"></i> <span data-t="btn_start">Comenzar a usar ahora</span>
                     </a>
                 </div>
                 <div class="mt-8 flex items-center justify-center lg:justify-start gap-6 text-sm text-slate-500 font-medium">
@@ -82,13 +140,13 @@
                 <div class="absolute -bottom-10 -left-10 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
 
                 <div class="relative bg-black rounded-2xl border-[6px] border-slate-800 shadow-2xl overflow-hidden transform rotate-y-6 hover:rotate-y-0 transition duration-700 ease-out z-20">
-                    <img src="pantalla%20principal.png" onerror="this.onerror=null; this.src='https://placehold.co/800x500/000000/22c55e?text=Monitor+Neonatal';" alt="Monitor Neonatal" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition">
+                    <img src="pantalla%20principal.png" onerror="this.onerror=null; this.src='https://placehold.co/800x500/000000/22c55e?text=Monitor+Neonatal';" alt="Monitor Neonatal Interface" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition">
                     <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
                 </div>
 
                 <div class="absolute -bottom-12 -left-8 w-36 md:w-44 bg-slate-900 rounded-[2rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden z-30 transform -rotate-6 hover:rotate-0 transition duration-500 hidden md:block">
                     <div class="h-6 bg-black w-full flex justify-center items-center z-40 relative"><div class="w-12 h-4 bg-black rounded-b-xl"></div></div>
-                    <img src="Screenshot_20251129-191039.Moto%20App%20Launcher.png" onerror="this.onerror=null; this.src='https://placehold.co/300x600/0f172a/3b82f6?text=Control+Remoto';" alt="Control Remoto" class="w-full h-auto object-cover relative -top-1">
+                    <img src="Screenshot_20251129-191039.Moto%20App%20Launcher.png" onerror="this.onerror=null; this.src='https://placehold.co/300x600/0f172a/3b82f6?text=Control+Remoto';" alt="Remote Control Smartphone Interface" class="w-full h-auto object-cover relative -top-1">
                 </div>
             </div>
         </div>
@@ -97,11 +155,11 @@
     <!-- Value Proposition -->
     <section class="bg-white py-20 border-t border-slate-100">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold text-slate-900 mb-8">Basta de gritar los signos vitales</h2>
+            <h2 class="text-3xl font-bold text-slate-900 mb-8" data-t="value_title">Basta de gritar los signos vitales</h2>
             <div class="flex flex-col md:flex-row items-center gap-8 justify-center bg-slate-50 p-8 rounded-2xl border border-slate-100">
                 <div class="flex-1 text-right md:border-r md:border-slate-200 md:pr-8">
-                    <p class="text-red-500 font-bold italic text-lg">"¡Imaginate que satura 85%!"</p>
-                    <p class="text-sm text-slate-400 mt-1">Simulación Tradicional</p>
+                    <p class="text-red-500 font-bold italic text-lg" data-t="value_old">"¡Imaginate que satura 85%!"</p>
+                    <p class="text-sm text-slate-400 mt-1" data-t="value_old_tag">Simulación Tradicional</p>
                 </div>
                 <div class="flex-0 p-2 bg-white rounded-full border border-slate-200 text-slate-300 shadow-sm">
                     <i class="fa-solid fa-arrow-right"></i>
@@ -110,9 +168,9 @@
                     <div class="flex items-center gap-3">
                         <i class="fa-solid fa-volume-high text-blue-500 animate-pulse"></i>
                         <span class="text-3xl font-mono font-bold text-yellow-500">85<span class="text-sm">%</span></span>
-                        <span class="text-slate-900 font-bold">Visual y Auditivo</span>
+                        <span class="text-slate-900 font-bold" data-t="value_new_tag_main">Visual y Auditivo</span>
                     </div>
-                    <p class="text-sm text-slate-400 mt-1">Con NeoMonitor</p>
+                    <p class="text-sm text-slate-400 mt-1" data-t="value_new_tag">Con NeoMonitor</p>
                 </div>
             </div>
         </div>
@@ -121,8 +179,8 @@
     <!-- How it Works -->
     <section id="funciona" class="py-20 max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
-            <span class="text-blue-600 font-bold tracking-wider text-sm uppercase">Simpleza total</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Listo para simular en 3 pasos</h2>
+            <span class="text-blue-600 font-bold tracking-wider text-sm uppercase" data-t="how_tag">Simpleza total</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2" data-t="how_title">Listo para simular en 3 pasos</h2>
         </div>
 
         <div class="grid md:grid-cols-3 gap-12 relative">
@@ -130,20 +188,20 @@
 
             <div class="text-center bg-white p-6 rounded-xl hover:shadow-xl transition duration-300">
                 <div class="w-24 h-24 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 border-4 border-white shadow-lg">1</div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">Abrí el Monitor</h3>
-                <p class="text-slate-600">Usá una tablet o PC conectada a un TV. Entrá a la web y elegí "Modo Monitor".</p>
+                <h3 class="text-xl font-bold text-slate-900 mb-3" data-t="step1_title">Abrí el Monitor</h3>
+                <p class="text-slate-600" data-t="step1_desc">Usá una tablet o PC conectada a un TV. Entrá a la web y elegí "Modo Monitor".</p>
             </div>
 
             <div class="text-center bg-white p-6 rounded-xl hover:shadow-xl transition duration-300">
                 <div class="w-24 h-24 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 border-4 border-white shadow-lg">2</div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">Abrí el Control</h3>
-                <p class="text-slate-600">Desde tu celular, entrá a la misma web y elegí "Modo Control".</p>
+                <h3 class="text-xl font-bold text-slate-900 mb-3" data-t="step2_title">Abrí el Control</h3>
+                <p class="text-slate-600" data-t="step2_desc">Desde tu celular, entrá a la misma web y elegí "Modo Control".</p>
             </div>
 
             <div class="text-center bg-white p-6 rounded-xl hover:shadow-xl transition duration-300">
                 <div class="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 border-4 border-white shadow-lg">3</div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">¡Sincronizá!</h3>
-                <p class="text-slate-600">Ingresá el código de 4 dígitos que aparece en el monitor y tomá el control total.</p>
+                <h3 class="text-xl font-bold text-slate-900 mb-3" data-t="step3_title">¡Sincronizá!</h3>
+                <p class="text-slate-600" data-t="step3_desc">Ingresá el código de 4 dígitos que aparece en el monitor y tomá el control total.</p>
             </div>
         </div>
     </section>
@@ -153,8 +211,8 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Diseñado por Neonatólogos,<br>para Neonatólogos.</h2>
-                    <p class="text-slate-400 text-lg mb-8">Sabemos lo que pasa en una recepción real. Por eso cada detalle está pensado para generar aprendizaje efectivo sin complicaciones técnicas.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6" data-t="feat_main_title">Diseñado por Neonatólogos,<br>para Neonatólogos.</h2>
+                    <p class="text-slate-400 text-lg mb-8" data-t="feat_main_desc">Sabemos lo que pasa en una recepción real. Por eso cada detalle está pensado para generar aprendizaje efectivo sin complicaciones técnicas.</p>
                     
                     <div class="space-y-6">
                         <div class="flex gap-4">
@@ -162,8 +220,8 @@
                                 <i class="fa-solid fa-sliders"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg">Modificación Dinámica</h4>
-                                <p class="text-slate-400 text-sm mt-1">Ajustá la frecuencia cardíaca y la saturación con sliders suaves y transiciones realistas.</p>
+                                <h4 class="font-bold text-lg" data-t="feat1_title">Modificación Dinámica</h4>
+                                <p class="text-slate-400 text-sm mt-1" data-t="feat1_desc">Ajustá la frecuencia cardíaca y la saturación con sliders suaves y transiciones realistas.</p>
                             </div>
                         </div>
 
@@ -172,8 +230,8 @@
                                 <i class="fa-solid fa-bell"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg">Alarmas Inteligentes</h4>
-                                <p class="text-slate-400 text-sm mt-1">Alarmas de prioridad configurables para entrenar la respuesta del equipo ante emergencias.</p>
+                                <h4 class="font-bold text-lg" data-t="feat2_title">Alarmas Inteligentes</h4>
+                                <p class="text-slate-400 text-sm mt-1" data-t="feat2_desc">Alarmas de prioridad configurables para entrenar la respuesta del equipo ante emergencias.</p>
                             </div>
                         </div>
 
@@ -182,8 +240,8 @@
                                 <i class="fa-solid fa-baby"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg">Sonidos Ambientales</h4>
-                                <p class="text-slate-400 text-sm mt-1">Incluye sonidos de quejido y llanto para aumentar el realismo de la escena.</p>
+                                <h4 class="font-bold text-lg" data-t="feat3_title">Sonidos Ambientales</h4>
+                                <p class="text-slate-400 text-sm mt-1" data-t="feat3_desc">Incluye sonidos de quejido y llanto para aumentar el realismo de la escena.</p>
                             </div>
                         </div>
                     </div>
@@ -191,9 +249,9 @@
                 
                 <div class="bg-slate-800 rounded-2xl p-2 shadow-2xl border border-slate-700 transform rotate-1 hover:rotate-0 transition duration-500">
                     <div class="relative overflow-hidden rounded-xl">
-                        <img src="pantalla%20de%20inicio.png" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=NeoMonitor+Inicio';" alt="Pantalla de Inicio" class="w-full h-auto shadow-inner opacity-90 hover:opacity-100 transition">
+                        <img src="pantalla%20de%20inicio.png" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=NeoMonitor+Inicio';" alt="NeoMonitor Start Screen" class="w-full h-auto shadow-inner opacity-90 hover:opacity-100 transition">
                     </div>
-                    <p class="text-center text-xs text-slate-500 mt-2 font-mono">Interfaz Simple y Directa</p>
+                    <p class="text-center text-xs text-slate-500 mt-2 font-mono" data-t="feat_ui_tag">Interfaz Simple y Directa</p>
                 </div>
             </div>
         </div>
@@ -205,22 +263,22 @@
             <div class="inline-block p-4 bg-blue-500 rounded-full mb-6">
                 <i class="fa-solid fa-gift text-4xl"></i>
             </div>
-            <h2 class="text-3xl md:text-5xl font-bold mb-6">NeoMonitor es 100% Gratuito</h2>
-            <p class="text-xl text-blue-100 leading-relaxed mb-10">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6" data-t="free_title">NeoMonitor es 100% Gratuito</h2>
+            <p class="text-xl text-blue-100 leading-relaxed mb-10" data-t="free_desc">
                 Creemos que la educación de calidad debe ser accesible. Hemos decidido que NeoMonitor sea una herramienta libre para todos los instructores de reanimación neonatal. Sin límites de tiempo, sin cargos mensuales.
             </p>
             <div class="grid sm:grid-cols-2 gap-6 text-left max-w-2xl mx-auto">
                 <div class="bg-blue-700/40 p-6 rounded-2xl border border-blue-400/30">
-                    <h4 class="font-bold text-lg mb-2"><i class="fa-solid fa-infinity mr-2"></i> Sin Límites</h4>
-                    <p class="text-sm text-blue-100">Usalo en todas tus clases, el tiempo que necesites.</p>
+                    <h4 class="font-bold text-lg mb-2"><i class="fa-solid fa-infinity mr-2"></i> <span data-t="free_feat1_title">Sin Límites</span></h4>
+                    <p class="text-sm text-blue-100" data-t="free_feat1_desc">Usalo en todas tus clases, el tiempo que necesites.</p>
                 </div>
                 <div class="bg-blue-700/40 p-6 rounded-2xl border border-blue-400/30">
-                    <h4 class="font-bold text-lg mb-2"><i class="fa-solid fa-users mr-2"></i> Comunitario</h4>
-                    <p class="text-sm text-blue-100">Hecho por profesionales para mejorar la salud neonatal.</p>
+                    <h4 class="font-bold text-lg mb-2"><i class="fa-solid fa-users mr-2"></i> <span data-t="free_feat2_title">Comunitario</span></h4>
+                    <p class="text-sm text-blue-100" data-t="free_feat2_desc">Hecho por profesionales para mejorar la salud neonatal.</p>
                 </div>
             </div>
             <a href="https://www.neomonitor.pro" class="inline-block mt-12 px-10 py-5 bg-white text-blue-600 rounded-2xl font-bold text-xl hover:bg-blue-50 transition shadow-2xl">
-                Empezar a Usar Gratis
+                <span data-t="btn_start_free">Empezar a Usar Gratis</span>
             </a>
         </div>
     </section>
@@ -233,17 +291,185 @@
                     <i class="fa-solid fa-heart-pulse text-blue-600"></i>
                     <span class="text-white font-bold text-lg">NeoMonitor</span>
                 </div>
-                <p class="text-sm">Hecho con <i class="fa-solid fa-heart text-red-500 mx-1"></i> en Argentina para el mundo.</p>
+                <p class="text-sm" data-t="footer_made">Hecho con <i class="fa-solid fa-heart text-red-500 mx-1"></i> en Argentina para el mundo.</p>
             </div>
             <div class="flex flex-col md:flex-row gap-6 md:gap-12 text-sm">
-                <a href="mailto:info@neomonitor.pro" class="hover:text-white transition">Contacto</a>
+                <a href="mailto:info@neomonitor.pro" class="hover:text-white transition" data-t="footer_contact">Contacto</a>
                 <a href="https://instagram.com/neomonitor.pro" target="_blank" class="hover:text-white transition">Instagram</a>
             </div>
         </div>
         <div class="mt-8 text-center px-6">
-             <p class="text-xs opacity-40 max-w-md mx-auto">"Aplicación hecha con muchas ganas. Úselo bajo su exclusiva responsabilidad. Proyecto de código abierto para fines educativos." 😉</p>
+             <p class="text-xs opacity-40 max-w-md mx-auto" data-t="footer_disclaimer">"Aplicación hecha con muchas ganas. Úselo bajo su exclusiva responsabilidad. Proyecto de código abierto para fines educativos." 😉</p>
         </div>
     </footer>
 
+    <script>
+        const translations = {
+            es: {
+                meta_title: "NeoMonitor | Simulación Neonatal de Alta Fidelidad Gratuita",
+                meta_desc: "Simulador neonatal profesional para entrenamiento en RCP. Convierte cualquier dispositivo en un monitor de signos vitales con control remoto. Gratis para instructores.",
+                nav_how: "Cómo funciona",
+                nav_features: "Características",
+                nav_free: "Proyecto Gratuito",
+                hero_title: 'Simulación Neonatal de <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Alta Fidelidad</span> Totalmente Gratis.',
+                hero_desc: "Transformá cualquier tablet o celular en un monitor multiparamétrico realista. Sin suscripciones ni costos ocultos. Una herramienta libre para la docencia médica.",
+                btn_start: "Comenzar a usar ahora",
+                value_title: "Basta de gritar los signos vitales",
+                value_old: '"¡Imaginate que satura 85%!"',
+                value_old_tag: "Simulación Tradicional",
+                value_new_tag_main: "Visual y Auditivo",
+                value_new_tag: "Con NeoMonitor",
+                how_tag: "Simpleza total",
+                how_title: "Listo para simular en 3 pasos",
+                step1_title: "Abrí el Monitor",
+                step1_desc: 'Usá una tablet o PC conectada a un TV. Entrá a la web y elegí "Modo Monitor".',
+                step2_title: "Abrí el Control",
+                step2_desc: 'Desde tu celular, entrá a la misma web y elegí "Modo Control".',
+                step3_title: "¡Sincronizá!",
+                step3_desc: "Ingresá el código de 4 dígitos que aparece en el monitor y tomá el control total.",
+                feat_main_title: "Diseñado por Neonatólogos,<br>para Neonatólogos.",
+                feat_main_desc: "Sabemos lo que pasa en una recepción real. Por eso cada detalle está pensado para generar aprendizaje efectivo sin complicaciones técnicas.",
+                feat1_title: "Modificación Dinámica",
+                feat1_desc: "Ajustá la frecuencia cardíaca y la saturación con sliders suaves y transiciones realistas.",
+                feat2_title: "Alarmas Inteligentes",
+                feat2_desc: "Alarmas de prioridad configurables para entrenar la respuesta del equipo ante emergencias.",
+                feat3_title: "Sonidos Ambientales",
+                feat3_desc: "Incluye sonidos de quejido y llanto para aumentar el realismo de la escena.",
+                feat_ui_tag: "Interfaz Simple y Directa",
+                free_title: "NeoMonitor es 100% Gratuito",
+                free_desc: "Creemos que la educación de calidad debe ser accesible. Hemos decidido que NeoMonitor sea una herramienta libre para todos los instructores de reanimación neonatal. Sin límites de tiempo, sin cargos mensuales.",
+                free_feat1_title: "Sin Límites",
+                free_feat1_desc: "Usalo en todas tus clases, el tiempo que necesites.",
+                free_feat2_title: "Comunitario",
+                free_feat2_desc: "Hecho por profesionales para mejorar la salud neonatal.",
+                btn_start_free: "Empezar a Usar Gratis",
+                footer_made: "Hecho con <i class='fa-solid fa-heart text-red-500 mx-1'></i> en Argentina para el mundo.",
+                footer_contact: "Contacto",
+                footer_disclaimer: '"Aplicación hecha con muchas ganas. Úselo bajo su exclusiva responsabilidad. Proyecto de código abierto para fines educativos." 😉'
+            },
+            en: {
+                meta_title: "NeoMonitor | Free High-Fidelity Neonatal Simulation",
+                meta_desc: "Professional neonatal simulator for CPR training. Turn any device into a vital signs monitor with remote control. Free for instructors.",
+                nav_how: "How it works",
+                nav_features: "Features",
+                nav_free: "Free Project",
+                hero_title: 'Neonatal Simulation with <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">High Fidelity</span> Completely Free.',
+                hero_desc: "Turn any tablet or phone into a realistic multiparameter monitor. No subscriptions or hidden costs. A free tool for medical teaching.",
+                btn_start: "Start using now",
+                value_title: "Stop shouting vital signs",
+                value_old: '"Imagine it saturates at 85%!"',
+                value_old_tag: "Traditional Simulation",
+                value_new_tag_main: "Visual and Auditory",
+                value_new_tag: "With NeoMonitor",
+                how_tag: "Total Simplicity",
+                how_title: "Ready to simulate in 3 steps",
+                step1_title: "Open the Monitor",
+                step1_desc: 'Use a tablet or PC connected to a TV. Enter the web and choose "Monitor Mode".',
+                step2_title: "Open the Control",
+                step2_desc: 'From your phone, enter the same web and choose "Control Mode".',
+                step3_title: "Sync Up!",
+                step3_desc: "Enter the 4-digit code shown on the monitor and take full control.",
+                feat_main_title: "Designed by Neonatologists,<br>for Neonatologists.",
+                feat_main_desc: "We know what happens in a real reception. That's why every detail is designed for effective learning without technical complications.",
+                feat1_title: "Dynamic Modification",
+                feat1_desc: "Adjust heart rate and saturation with smooth sliders and realistic transitions.",
+                feat2_title: "Smart Alarms",
+                feat2_desc: "Configurable priority alarms to train the team's response to emergencies.",
+                feat3_title: "Ambient Sounds",
+                feat3_desc: "Includes grunt and cry sounds to increase the realism of the scene.",
+                feat_ui_tag: "Simple and Direct Interface",
+                free_title: "NeoMonitor is 100% Free",
+                free_desc: "We believe quality education should be accessible. We've decided to make NeoMonitor a free tool for all neonatal resuscitation instructors. No time limits, no monthly charges.",
+                free_feat1_title: "No Limits",
+                free_feat1_desc: "Use it in all your classes, as long as you need.",
+                free_feat2_title: "Community Driven",
+                free_feat2_desc: "Made by professionals to improve neonatal health.",
+                btn_start_free: "Start Using for Free",
+                footer_made: "Made with <i class='fa-solid fa-heart text-red-500 mx-1'></i> in Argentina for the world.",
+                footer_contact: "Contact",
+                footer_disclaimer: '"Application made with great effort. Use at your own risk. Open source project for educational purposes." 😉'
+            },
+            pt: {
+                meta_title: "NeoMonitor | Simulação Neonatal de Alta Fidelidade Gratuita",
+                meta_desc: "Simulador neonatal profissional para treinamento em RCP. Converta qualquer dispositivo em um monitor de sinais vitais com controle remoto. Grátis para instrutores.",
+                nav_how: "Como funciona",
+                nav_features: "Características",
+                nav_free: "Projeto Gratuito",
+                hero_title: 'Simulação Neonatal de <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Alta Fidelidade</span> Totalmente Grátis.',
+                hero_desc: "Transforme qualquer tablet ou celular em um monitor multiparamétrico realista. Sem assinaturas ou custos ocultos. Uma ferramenta livre para o ensino médico.",
+                btn_start: "Começar a usar agora",
+                value_title: "Chega de gritar os sinais vitais",
+                value_old: '"Imagine que satura 85%!"',
+                value_old_tag: "Simulação Tradicional",
+                value_new_tag_main: "Visual e Auditivo",
+                value_new_tag: "Com NeoMonitor",
+                how_tag: "Simplicidade total",
+                how_title: "Pronto para simular em 3 passos",
+                step1_title: "Abra o Monitor",
+                step1_desc: 'Use um tablet ou PC conectado a uma TV. Entre na web e escolha "Modo Monitor".',
+                step2_title: "Abra o Controle",
+                step2_desc: 'No seu celular, entre na mesma web e escolha "Modo Controle".',
+                step3_title: "Sincronize!",
+                step3_desc: "Insira o código de 4 dígitos que aparece no monitor e assuma o controle total.",
+                feat_main_title: "Projetado por Neonatologistas,<br>para Neonatologistas.",
+                feat_main_desc: "Sabemos o que acontece em uma recepção real. É por isso que cada detalhe é pensado para gerar aprendizado eficaz sem complicações técnicas.",
+                feat1_title: "Modificação Dinâmica",
+                feat1_desc: "Ajuste a frequência cardíaca e a saturação com controles suaves e transições realistas.",
+                feat2_title: "Alarmes Inteligentes",
+                feat2_desc: "Alarmes de prioridade configuráveis para treinar a resposta da equipe a emergências.",
+                feat3_title: "Sons Ambientais",
+                feat3_desc: "Inclui sons de gemido e choro para aumentar o realismo da cena.",
+                feat_ui_tag: "Interface Simples e Direta",
+                free_title: "NeoMonitor é 100% Gratuito",
+                free_desc: "Acreditamos que a educação de qualidade deve ser acessível. Decidimos tornar o NeoMonitor uma ferramenta gratuita para todos os instrutores de reanimação neonatal. Sem limites de tempo, sem mensalidades.",
+                free_feat1_title: "Sem Limites",
+                free_feat1_desc: "Use em todas as suas aulas, pelo tempo que precisar.",
+                free_feat2_title: "Comunitário",
+                free_feat2_desc: "Feito por profissionais para melhorar a saúde neonatal.",
+                btn_start_free: "Começar a Usar Grátis",
+                footer_made: "Feito com <i class='fa-solid fa-heart text-red-500 mx-1'></i> na Argentina para o mundo.",
+                footer_contact: "Contato",
+                footer_disclaimer: '"Aplicação feita com muita vontade. Use sob sua exclusiva responsabilidade. Projeto de código aberto para fins educativos." 😉'
+            }
+        };
+
+        function changeLanguage(lang) {
+            // Actualizar etiquetas meta dinámicas para SEO
+            document.getElementById('meta-title').innerText = translations[lang].meta_title;
+            document.getElementById('meta-description').setAttribute('content', translations[lang].meta_desc);
+            document.documentElement.lang = lang;
+
+            // Actualizar todos los elementos con data-t
+            document.querySelectorAll('[data-t]').forEach(el => {
+                const key = el.getAttribute('data-t');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Actualizar estado de los botones
+            ['es', 'en', 'pt'].forEach(l => {
+                const btn = document.getElementById('btn-' + l);
+                if (l === lang) {
+                    btn.classList.add('bg-white', 'shadow-sm');
+                    btn.classList.remove('text-slate-500');
+                } else {
+                    btn.classList.remove('bg-white', 'shadow-sm');
+                    btn.classList.add('text-slate-500');
+                }
+            });
+
+            // Guardar preferencia
+            localStorage.setItem('neo_lang', lang);
+        }
+
+        // Detectar idioma inicial
+        window.onload = () => {
+            const savedLang = localStorage.getItem('neo_lang');
+            const browserLang = navigator.language.split('-')[0];
+            const startLang = savedLang || (translations[browserLang] ? browserLang : 'es');
+            changeLanguage(startLang);
+        };
+    </script>
 </body>
 </html>
