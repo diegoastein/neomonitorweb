@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Primario -->
-    <title>NeoMonitor | Simulador de Monitor Clínico Gratis — Neonatología, Pediatría, UCI, Emergencias</title>
-    <meta name="description" content="NeoMonitor es una app web gratuita que convierte cualquier dispositivo en un monitor de signos vitales de alta fidelidad. Para neonatólogos, pediatras, intensivistas, emergentólogos, médicos clínicos y enfermería. Sin registro. Sin costo. Hecho en Argentina.">
+    <title id="page-title">NeoMonitor | Simulador de Monitor Clínico Gratis — Neonatología, Pediatría, UCI, Emergencias</title>
+    <meta id="meta-description" name="description" content="NeoMonitor es una app web gratuita que convierte cualquier dispositivo en un monitor de signos vitales de alta fidelidad. Para neonatólogos, pediatras, intensivistas, emergentólogos y estudiantes. Sin registro. Sin costo. Hecho en Argentina.">
     <meta name="keywords" content="simulador neonatal, simulación clínica gratis, monitor signos vitales, RCP neonatal, reanimación neonatal, simulación pediátrica, simulación UCI, neomonitor, Diego Steinberg, enfermería simulación, simulador médico gratuito, neonatal simulator free, simulação clínica gratuita">
     <meta name="author" content="Dr. Diego Steinberg">
     <meta name="robots" content="index, follow">
@@ -123,18 +123,18 @@
                 linear-gradient(90deg, rgba(34,197,94,0.05) 1px, transparent 1px);
             background-size: 40px 40px;
         }
+
+        .lang-btn-active {
+            background-color: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border-color: rgba(34, 197, 94, 0.4);
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-white overflow-x-hidden">
 
-    <!-- OPCION A: "DARK MONITOR" — Estética de monitor médico real -->
-    <!-- Nota para presentación -->
-    <div class="fixed top-0 left-0 right-0 z-[100] bg-yellow-400 text-slate-900 text-center text-xs font-bold py-1">
-        OPCIÓN A — "Dark Monitor": Estética de equipo médico real. Dark, técnico, inmersivo.
-    </div>
-
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 top-6 bg-slate-950/90 backdrop-blur-md border-b border-green-500/20" style="top:24px">
+    <nav class="fixed w-full z-50 bg-slate-950/90 backdrop-blur-md border-b border-green-500/20">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <div class="relative">
@@ -146,15 +146,22 @@
                 <span class="font-mono font-bold text-lg text-green-400 tracking-widest">NEO<span class="text-white">MONITOR</span></span>
             </div>
             <div class="hidden md:flex gap-8 text-sm font-semibold text-slate-400">
-                <a href="#como" class="hover:text-green-400 transition">Cómo funciona</a>
-                <a href="#features" class="hover:text-green-400 transition">Características</a>
-                <a href="#publico" class="hover:text-green-400 transition">Para quién</a>
+                <a href="#como" data-t="nav_how" class="hover:text-green-400 transition">Cómo funciona</a>
+                <a href="#features" data-t="nav_features" class="hover:text-green-400 transition">Características</a>
+                <a href="#publico" data-t="nav_audience" class="hover:text-green-400 transition">Para quién</a>
             </div>
-            <div class="flex items-center gap-4">
-                <a href="https://instagram.com/neomonitor" target="_blank" class="text-slate-400 hover:text-pink-400 transition">
-                    <i class="fa-brands fa-instagram text-xl"></i>
+            <div class="flex items-center gap-3">
+                <!-- Language Selector -->
+                <div class="flex items-center gap-1 bg-slate-900 border border-slate-700 p-1 rounded-lg">
+                    <button onclick="changeLanguage('es')" id="btn-es" class="px-2 py-1 text-xs font-mono font-bold rounded border border-transparent transition">ES</button>
+                    <button onclick="changeLanguage('en')" id="btn-en" class="px-2 py-1 text-xs font-mono font-bold rounded border border-transparent transition text-slate-500 hover:text-white">EN</button>
+                    <button onclick="changeLanguage('pt')" id="btn-pt" class="px-2 py-1 text-xs font-mono font-bold rounded border border-transparent transition text-slate-500 hover:text-white">PT</button>
+                </div>
+                <a href="https://instagram.com/neomonitor.pro" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg border border-pink-500/30 bg-pink-500/10 text-pink-400 hover:bg-pink-500/20 hover:border-pink-500/60 transition font-mono text-sm font-bold">
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                    <span class="hidden sm:inline">@neomonitor.pro</span>
                 </a>
-                <a href="https://www.neomonitor.pro" class="px-4 py-2 bg-green-500 text-slate-950 rounded-lg font-bold text-sm hover:bg-green-400 transition">
+                <a href="https://www.neomonitor.pro" class="px-4 py-2 bg-green-500 text-slate-950 rounded-lg font-bold text-sm hover:bg-green-400 transition" data-t="nav_open">
                     Abrir App
                 </a>
             </div>
@@ -169,22 +176,22 @@
             <div>
                 <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-mono font-bold mb-6 tracking-wider">
                     <span class="w-2 h-2 rounded-full bg-green-400 blink"></span>
-                    100% GRATUITO · HECHO EN ARGENTINA
+                    <span data-t="hero_badge">100% GRATUITO · HECHO EN ARGENTINA</span>
                 </div>
 
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6" data-t="hero_title">
                     El monitor que<br>
                     <span class="text-green-400 number-glow">faltaba</span><br>
                     en simulación.
                 </h1>
 
-                <p class="text-slate-400 text-lg mb-8 leading-relaxed max-w-lg">
+                <p class="text-slate-400 text-lg mb-8 leading-relaxed max-w-lg" data-t="hero_desc">
                     Convertí cualquier dispositivo en un monitor de signos vitales de alta fidelidad. Para neonatólogos, intensivistas, pediatras, emergentólogos y estudiantes. Sin costo. Sin registro.
                 </p>
 
                 <div class="flex flex-wrap gap-4 mb-10">
                     <a href="https://www.neomonitor.pro" class="px-8 py-4 bg-green-500 text-slate-950 rounded-xl font-bold text-lg hover:bg-green-400 transition shadow-lg shadow-green-500/20 flex items-center gap-2">
-                        <i class="fa-solid fa-play text-sm"></i> Comenzar ahora — es gratis
+                        <i class="fa-solid fa-play text-sm"></i> <span data-t="hero_btn">Comenzar ahora — es gratis</span>
                     </a>
                 </div>
 
@@ -192,15 +199,15 @@
                 <div class="flex gap-8 text-sm">
                     <div>
                         <div class="font-mono text-2xl font-bold text-green-400 number-glow">3</div>
-                        <div class="text-slate-500 text-xs mt-1">modos de paciente</div>
+                        <div class="text-slate-500 text-xs mt-1" data-t="stat_modes">modos de paciente</div>
                     </div>
                     <div class="border-l border-slate-800 pl-8">
                         <div class="font-mono text-2xl font-bold text-yellow-400 number-glow">3</div>
-                        <div class="text-slate-500 text-xs mt-1">idiomas</div>
+                        <div class="text-slate-500 text-xs mt-1" data-t="stat_langs">idiomas</div>
                     </div>
                     <div class="border-l border-slate-800 pl-8">
                         <div class="font-mono text-2xl font-bold text-blue-400 number-glow">$0</div>
-                        <div class="text-slate-500 text-xs mt-1">para siempre</div>
+                        <div class="text-slate-500 text-xs mt-1" data-t="stat_price">para siempre</div>
                     </div>
                 </div>
             </div>
@@ -220,51 +227,51 @@
     <section id="publico" class="py-24 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <span class="text-green-400 font-mono text-sm tracking-widest">AUDIENCIA</span>
-                <h2 class="text-3xl md:text-4xl font-bold mt-2">Una herramienta para toda la medicina crítica</h2>
-                <p class="text-slate-400 mt-4 max-w-xl mx-auto">Si trabajás con pacientes o los estudiás, NeoMonitor es para vos.</p>
+                <span class="text-green-400 font-mono text-sm tracking-widest" data-t="audience_tag">AUDIENCIA</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2" data-t="audience_title">Una herramienta para toda la medicina crítica</h2>
+                <p class="text-slate-400 mt-4 max-w-xl mx-auto" data-t="audience_desc">Si trabajás con pacientes o los estudiás, NeoMonitor es para vos.</p>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-green-500/40 transition">
                     <i class="fa-solid fa-baby text-green-400 text-2xl mb-3"></i>
-                    <h3 class="font-bold text-lg">Neonatólogos</h3>
-                    <p class="text-slate-500 text-sm mt-1">Reanimación neonatal, RCP, VPP. El origen de la app.</p>
+                    <h3 class="font-bold text-lg" data-t="aud_neo_title">Neonatólogos</h3>
+                    <p class="text-slate-500 text-sm mt-1" data-t="aud_neo_desc">Reanimación neonatal, RCP, VPP. El origen de la app.</p>
                 </div>
                 <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-green-500/40 transition">
                     <i class="fa-solid fa-child text-blue-400 text-2xl mb-3"></i>
-                    <h3 class="font-bold text-lg">Pediatras</h3>
-                    <p class="text-slate-500 text-sm mt-1">Simulación pediátrica con parámetros ajustados por edad.</p>
+                    <h3 class="font-bold text-lg" data-t="aud_ped_title">Pediatras</h3>
+                    <p class="text-slate-500 text-sm mt-1" data-t="aud_ped_desc">Simulación pediátrica con parámetros ajustados por edad.</p>
                 </div>
                 <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-green-500/40 transition">
                     <i class="fa-solid fa-user-doctor text-yellow-400 text-2xl mb-3"></i>
-                    <h3 class="font-bold text-lg">Médicos Clínicos</h3>
-                    <p class="text-slate-500 text-sm mt-1">Escenarios de adultos para entrenamiento clínico general.</p>
+                    <h3 class="font-bold text-lg" data-t="aud_med_title">Médicos Clínicos</h3>
+                    <p class="text-slate-500 text-sm mt-1" data-t="aud_med_desc">Escenarios de adultos para entrenamiento clínico general.</p>
                 </div>
                 <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-green-500/40 transition">
                     <i class="fa-solid fa-bed-pulse text-red-400 text-2xl mb-3"></i>
-                    <h3 class="font-bold text-lg">Intensivistas</h3>
-                    <p class="text-slate-500 text-sm mt-1">UTI pediátrica y adultos. Casos críticos de alta complejidad.</p>
+                    <h3 class="font-bold text-lg" data-t="aud_int_title">Intensivistas</h3>
+                    <p class="text-slate-500 text-sm mt-1" data-t="aud_int_desc">UTI pediátrica y adultos. Casos críticos de alta complejidad.</p>
                 </div>
                 <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-green-500/40 transition">
                     <i class="fa-solid fa-truck-medical text-orange-400 text-2xl mb-3"></i>
-                    <h3 class="font-bold text-lg">Emergentólogos</h3>
-                    <p class="text-slate-500 text-sm mt-1">Escenarios de emergencia con alarmas y presets rápidos.</p>
+                    <h3 class="font-bold text-lg" data-t="aud_emer_title">Emergentólogos</h3>
+                    <p class="text-slate-500 text-sm mt-1" data-t="aud_emer_desc">Escenarios de emergencia con alarmas y presets rápidos.</p>
                 </div>
                 <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-green-500/40 transition">
                     <i class="fa-solid fa-graduation-cap text-purple-400 text-2xl mb-3"></i>
-                    <h3 class="font-bold text-lg">Alumnos de Medicina</h3>
-                    <p class="text-slate-500 text-sm mt-1">Aprendé a leer monitores reales sin equipos costosos.</p>
+                    <h3 class="font-bold text-lg" data-t="aud_stu_title">Alumnos de Medicina</h3>
+                    <p class="text-slate-500 text-sm mt-1" data-t="aud_stu_desc">Aprendé a leer monitores reales sin equipos costosos.</p>
                 </div>
                 <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-green-500/40 transition">
                     <i class="fa-solid fa-user-nurse text-pink-400 text-2xl mb-3"></i>
-                    <h3 class="font-bold text-lg">Enfermería</h3>
-                    <p class="text-slate-500 text-sm mt-1">Alumnos, docentes y escuelas de enfermería. Lectura de monitor y respuesta ante alarmas.</p>
+                    <h3 class="font-bold text-lg" data-t="aud_nur_title">Enfermería</h3>
+                    <p class="text-slate-500 text-sm mt-1" data-t="aud_nur_desc">Alumnos, docentes y escuelas de enfermería. Lectura de monitor y respuesta ante alarmas.</p>
                 </div>
                 <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-green-500/40 transition lg:col-span-1">
                     <i class="fa-solid fa-chalkboard-user text-cyan-400 text-2xl mb-3"></i>
-                    <h3 class="font-bold text-lg">Docentes e Instructores</h3>
-                    <p class="text-slate-500 text-sm mt-1">Entornos formales e informales. Sin setup técnico, sin costos.</p>
+                    <h3 class="font-bold text-lg" data-t="aud_teach_title">Docentes e Instructores</h3>
+                    <p class="text-slate-500 text-sm mt-1" data-t="aud_teach_desc">Entornos formales e informales. Sin setup técnico, sin costos.</p>
                 </div>
             </div>
         </div>
@@ -273,23 +280,23 @@
     <!-- Cómo funciona -->
     <section id="como" class="py-24 bg-slate-900 border-t border-slate-800">
         <div class="max-w-5xl mx-auto px-6 text-center">
-            <span class="text-green-400 font-mono text-sm tracking-widest">SETUP</span>
-            <h2 class="text-3xl font-bold mt-2 mb-16">En 3 pasos, listo para simular</h2>
+            <span class="text-green-400 font-mono text-sm tracking-widest" data-t="setup_tag">SETUP</span>
+            <h2 class="text-3xl font-bold mt-2 mb-16" data-t="setup_title">En 3 pasos, listo para simular</h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <div>
                     <div class="w-16 h-16 bg-slate-950 border-2 border-green-500/40 rounded-xl flex items-center justify-center font-mono text-2xl font-bold text-green-400 mx-auto mb-4">01</div>
-                    <h3 class="font-bold mb-2">Tablet / TV como monitor</h3>
-                    <p class="text-slate-500 text-sm">Abrí neomonitor.pro en una tablet o PC conectada al proyector. Elegí "Modo Monitor".</p>
+                    <h3 class="font-bold mb-2" data-t="step1_title">Tablet / TV como monitor</h3>
+                    <p class="text-slate-500 text-sm" data-t="step1_desc">Abrí neomonitor.pro en una tablet o PC conectada al proyector. Elegí "Modo Monitor".</p>
                 </div>
                 <div>
                     <div class="w-16 h-16 bg-slate-950 border-2 border-blue-500/40 rounded-xl flex items-center justify-center font-mono text-2xl font-bold text-blue-400 mx-auto mb-4">02</div>
-                    <h3 class="font-bold mb-2">Tu celular como control</h3>
-                    <p class="text-slate-500 text-sm">Desde tu teléfono, abrí la misma web y elegí "Modo Control". Todo en el mismo navegador.</p>
+                    <h3 class="font-bold mb-2" data-t="step2_title">Tu celular como control</h3>
+                    <p class="text-slate-500 text-sm" data-t="step2_desc">Desde tu teléfono, abrí la misma web y elegí "Modo Control". Todo en el mismo navegador.</p>
                 </div>
                 <div>
                     <div class="w-16 h-16 bg-slate-950 border-2 border-yellow-500/40 rounded-xl flex items-center justify-center font-mono text-2xl font-bold text-yellow-400 mx-auto mb-4">03</div>
-                    <h3 class="font-bold mb-2">¡Sincronizá con QR!</h3>
-                    <p class="text-slate-500 text-sm">Escaneá el código QR que aparece en el monitor con la cámara de tu celular. También podés ingresar el código de 4 dígitos manualmente.</p>
+                    <h3 class="font-bold mb-2" data-t="step3_title">¡Sincronizá con QR!</h3>
+                    <p class="text-slate-500 text-sm" data-t="step3_desc">Escaneá el código QR que aparece en el monitor con la cámara de tu celular. También podés ingresar el código de 4 dígitos manualmente.</p>
                 </div>
             </div>
         </div>
@@ -300,42 +307,42 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <span class="text-green-400 font-mono text-sm tracking-widest">FUNCIONALIDADES</span>
-                    <h2 class="text-3xl font-bold mt-2 mb-8">Todo lo que necesitás para una simulación real</h2>
+                    <span class="text-green-400 font-mono text-sm tracking-widest" data-t="feat_tag">FUNCIONALIDADES</span>
+                    <h2 class="text-3xl font-bold mt-2 mb-8" data-t="feat_title">Todo lo que necesitás para una simulación real</h2>
                     <div class="space-y-5">
                         <div class="flex gap-4 items-start">
                             <div class="w-10 h-10 bg-green-500/10 rounded-lg flex items-center justify-center text-green-400 shrink-0"><i class="fa-solid fa-sliders"></i></div>
                             <div>
-                                <h4 class="font-bold">Control en tiempo real</h4>
-                                <p class="text-slate-500 text-sm mt-0.5">FC y SpO₂ con sliders fluidos. Transición suave y configurable.</p>
+                                <h4 class="font-bold" data-t="feat1_title">Control en tiempo real</h4>
+                                <p class="text-slate-500 text-sm mt-0.5" data-t="feat1_desc">FC y SpO₂ con sliders fluidos. Transición suave y configurable.</p>
                             </div>
                         </div>
                         <div class="flex gap-4 items-start">
                             <div class="w-10 h-10 bg-red-500/10 rounded-lg flex items-center justify-center text-red-400 shrink-0"><i class="fa-solid fa-bell"></i></div>
                             <div>
-                                <h4 class="font-bold">Alarmas de prioridad</h4>
-                                <p class="text-slate-500 text-sm mt-0.5">Alarmas visuales y sonoras para entrenar la respuesta ante emergencias.</p>
+                                <h4 class="font-bold" data-t="feat2_title">Alarmas de prioridad</h4>
+                                <p class="text-slate-500 text-sm mt-0.5" data-t="feat2_desc">Alarmas visuales y sonoras para entrenar la respuesta ante emergencias.</p>
                             </div>
                         </div>
                         <div class="flex gap-4 items-start">
                             <div class="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-400 shrink-0"><i class="fa-solid fa-list-check"></i></div>
                             <div>
-                                <h4 class="font-bold">Presets y Casos Clínicos</h4>
-                                <p class="text-slate-500 text-sm mt-0.5">Escenarios pre-configurados: Normal, Desaturación, Quejido, VPP y más.</p>
+                                <h4 class="font-bold" data-t="feat3_title">Presets y Casos Clínicos</h4>
+                                <p class="text-slate-500 text-sm mt-0.5" data-t="feat3_desc">Escenarios pre-configurados: Normal, Desaturación, Quejido, VPP y más.</p>
                             </div>
                         </div>
                         <div class="flex gap-4 items-start">
                             <div class="w-10 h-10 bg-purple-500/10 rounded-lg flex items-center justify-center text-purple-400 shrink-0"><i class="fa-solid fa-comment-dots"></i></div>
                             <div>
-                                <h4 class="font-bold">Debriefing integrado</h4>
-                                <p class="text-slate-500 text-sm mt-0.5">Herramienta de retroalimentación para cerrar el loop educativo.</p>
+                                <h4 class="font-bold" data-t="feat4_title">Debriefing integrado</h4>
+                                <p class="text-slate-500 text-sm mt-0.5" data-t="feat4_desc">Herramienta de retroalimentación para cerrar el loop educativo.</p>
                             </div>
                         </div>
                         <div class="flex gap-4 items-start">
                             <div class="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center text-blue-400 shrink-0"><i class="fa-solid fa-globe"></i></div>
                             <div>
-                                <h4 class="font-bold">3 idiomas</h4>
-                                <p class="text-slate-500 text-sm mt-0.5">Español, Inglés y Portugués. Ideal para cursos internacionales.</p>
+                                <h4 class="font-bold" data-t="feat5_title">3 idiomas</h4>
+                                <p class="text-slate-500 text-sm mt-0.5" data-t="feat5_desc">Español, Inglés y Portugués. Ideal para cursos internacionales.</p>
                             </div>
                         </div>
                     </div>
@@ -343,7 +350,6 @@
                 <div class="bg-slate-900 rounded-2xl p-1 border border-slate-800">
                     <div class="relative rounded-xl overflow-hidden">
                         <img src="assets/Screenshot_20260401-212640.Chrome.png" alt="NeoMonitor Control Panel" class="w-full rounded-xl opacity-90 hover:opacity-100 transition">
-                        <!-- Cubre la barra de navegación del navegador con la URL anterior -->
                         <div class="absolute bottom-0 left-0 right-0 h-12 bg-slate-900 flex items-center justify-center">
                             <span class="font-mono text-xs text-slate-500 tracking-wider">www.neomonitor.pro</span>
                         </div>
@@ -353,19 +359,43 @@
         </div>
     </section>
 
+    <!-- Instagram -->
+    <section class="py-16 border-t border-slate-800 bg-slate-950 text-center px-6 relative overflow-hidden">
+        <!-- Fondo decorativo -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-pink-600/10 via-purple-600/10 to-orange-500/10 blur-3xl"></div>
+        </div>
+        <div class="max-w-2xl mx-auto relative z-10">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500 via-purple-500 to-orange-400 mb-5 shadow-xl shadow-pink-500/30">
+                <i class="fa-brands fa-instagram text-white text-3xl"></i>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-black mb-2" data-t="ig_title">Seguinos en Instagram</h2>
+            <p class="text-slate-400 text-base mb-2" data-t="ig_desc">Casos clínicos, tips de simulación y novedades del proyecto.</p>
+            <p class="font-mono text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-orange-400 mb-6">@neomonitor.pro</p>
+            <a href="https://instagram.com/neomonitor.pro" target="_blank"
+               class="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-black text-base text-white transition shadow-xl shadow-pink-500/20
+                      bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400
+                      hover:from-pink-400 hover:via-purple-400 hover:to-orange-300">
+                <i class="fa-brands fa-instagram text-xl"></i>
+                <span data-t="ig_btn">Seguir ahora</span>
+            </a>
+            <p class="text-slate-600 text-xs mt-5 font-mono" data-t="ig_sub">Actualizaciones · Casos reales · Comunidad</p>
+        </div>
+    </section>
+
     <!-- CTA -->
     <section class="py-24 bg-gradient-to-b from-slate-950 to-slate-900 border-t border-slate-800 text-center px-6">
         <div class="max-w-2xl mx-auto">
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-mono font-bold mb-6 tracking-wider">
                 <span class="w-2 h-2 rounded-full bg-green-400 blink"></span>
-                GRATIS · SIN REGISTRO · SIN APP
+                <span data-t="cta_badge">GRATIS · SIN REGISTRO · SIN APP</span>
             </div>
-            <h2 class="text-4xl font-black mb-4">Hacé la prueba ahora mismo.</h2>
-            <p class="text-slate-400 text-lg mb-10">Abrí el link en dos dispositivos y en 60 segundos ya estás simulando.</p>
+            <h2 class="text-4xl font-black mb-4" data-t="cta_title">Hacé la prueba ahora mismo.</h2>
+            <p class="text-slate-400 text-lg mb-10" data-t="cta_desc">Abrí el link en dos dispositivos y en 60 segundos ya estás simulando.</p>
             <a href="https://www.neomonitor.pro" class="inline-flex items-center gap-3 px-10 py-5 bg-green-500 text-slate-950 rounded-2xl font-black text-xl hover:bg-green-400 transition shadow-2xl shadow-green-500/20">
                 <i class="fa-solid fa-play"></i> neomonitor.pro
             </a>
-            <p class="text-slate-600 text-sm mt-6">Funciona en iOS · Android · Web</p>
+            <p class="text-slate-600 text-sm mt-6" data-t="cta_platforms">Funciona en iOS · Android · Web</p>
         </div>
     </section>
 
@@ -374,22 +404,254 @@
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
                 <span class="font-mono font-bold text-green-400 tracking-widest">NEO<span class="text-white">MONITOR</span></span>
-                <p class="text-slate-600 text-xs mt-1">Hecho en Argentina por un médico argentino.</p>
+                <p class="text-slate-600 text-xs mt-1" data-t="footer_tagline">Hecho en Argentina por un médico argentino.</p>
             </div>
             <div class="flex gap-8 text-sm text-slate-500">
                 <a href="mailto:info@neomonitor.pro" class="hover:text-white transition">info@neomonitor.pro</a>
-                <a href="https://instagram.com/neomonitor" target="_blank" class="hover:text-pink-400 transition"><i class="fa-brands fa-instagram mr-1"></i>@neomonitor</a>
+                <a href="https://instagram.com/neomonitor.pro" target="_blank" class="hover:text-pink-400 transition"><i class="fa-brands fa-instagram mr-1"></i>@neomonitor.pro</a>
             </div>
         </div>
     </footer>
 
     <script>
+        const translations = {
+            es: {
+                page_title: "NeoMonitor | Simulador de Monitor Clínico Gratis — Neonatología, Pediatría, UCI, Emergencias",
+                meta_desc: "NeoMonitor es una app web gratuita que convierte cualquier dispositivo en un monitor de signos vitales de alta fidelidad. Para neonatólogos, pediatras, intensivistas, emergentólogos y estudiantes. Sin registro. Sin costo. Hecho en Argentina.",
+                nav_how: "Cómo funciona",
+                nav_features: "Características",
+                nav_audience: "Para quién",
+                nav_open: "Abrir App",
+                hero_badge: "100% GRATUITO · HECHO EN ARGENTINA",
+                hero_title: 'El monitor que<br><span class="text-green-400 number-glow">faltaba</span><br>en simulación.',
+                hero_desc: "Convertí cualquier dispositivo en un monitor de signos vitales de alta fidelidad. Para neonatólogos, intensivistas, pediatras, emergentólogos y estudiantes. Sin costo. Sin registro.",
+                hero_btn: "Comenzar ahora — es gratis",
+                stat_modes: "modos de paciente",
+                stat_langs: "idiomas",
+                stat_price: "para siempre",
+                audience_tag: "AUDIENCIA",
+                audience_title: "Una herramienta para toda la medicina crítica",
+                audience_desc: "Si trabajás con pacientes o los estudiás, NeoMonitor es para vos.",
+                aud_neo_title: "Neonatólogos",
+                aud_neo_desc: "Reanimación neonatal, RCP, VPP. El origen de la app.",
+                aud_ped_title: "Pediatras",
+                aud_ped_desc: "Simulación pediátrica con parámetros ajustados por edad.",
+                aud_med_title: "Médicos Clínicos",
+                aud_med_desc: "Escenarios de adultos para entrenamiento clínico general.",
+                aud_int_title: "Intensivistas",
+                aud_int_desc: "UTI pediátrica y adultos. Casos críticos de alta complejidad.",
+                aud_emer_title: "Emergentólogos",
+                aud_emer_desc: "Escenarios de emergencia con alarmas y presets rápidos.",
+                aud_stu_title: "Alumnos de Medicina",
+                aud_stu_desc: "Aprendé a leer monitores reales sin equipos costosos.",
+                aud_nur_title: "Enfermería",
+                aud_nur_desc: "Alumnos, docentes y escuelas de enfermería. Lectura de monitor y respuesta ante alarmas.",
+                aud_teach_title: "Docentes e Instructores",
+                aud_teach_desc: "Entornos formales e informales. Sin setup técnico, sin costos.",
+                setup_tag: "CONFIGURACIÓN",
+                setup_title: "En 3 pasos, listo para simular",
+                step1_title: "Tablet / TV como monitor",
+                step1_desc: 'Abrí neomonitor.pro en una tablet o PC conectada al proyector. Elegí "Modo Monitor".',
+                step2_title: "Tu celular como control",
+                step2_desc: 'Desde tu teléfono, abrí la misma web y elegí "Modo Control". Todo en el mismo navegador.',
+                step3_title: "¡Sincronizá con QR!",
+                step3_desc: "Escaneá el código QR que aparece en el monitor con la cámara de tu celular. También podés ingresar el código de 4 dígitos manualmente.",
+                feat_tag: "FUNCIONALIDADES",
+                feat_title: "Todo lo que necesitás para una simulación real",
+                feat1_title: "Control en tiempo real",
+                feat1_desc: "FC y SpO₂ con sliders fluidos. Transición suave y configurable.",
+                feat2_title: "Alarmas de prioridad",
+                feat2_desc: "Alarmas visuales y sonoras para entrenar la respuesta ante emergencias.",
+                feat3_title: "Presets y Casos Clínicos",
+                feat3_desc: "Escenarios pre-configurados: Normal, Desaturación, Quejido, VPP y más.",
+                feat4_title: "Debriefing integrado",
+                feat4_desc: "Herramienta de retroalimentación para cerrar el loop educativo.",
+                feat5_title: "3 idiomas",
+                feat5_desc: "Español, Inglés y Portugués. Ideal para cursos internacionales.",
+                cta_badge: "GRATIS · SIN REGISTRO · SIN APP",
+                cta_title: "Hacé la prueba ahora mismo.",
+                cta_desc: "Abrí el link en dos dispositivos y en 60 segundos ya estás simulando.",
+                cta_platforms: "Funciona en iOS · Android · Web",
+                footer_tagline: "Hecho en Argentina por un médico argentino.",
+                ig_title: "Seguinos en Instagram",
+                ig_desc: "Casos clínicos, tips de simulación y novedades del proyecto.",
+                ig_btn: "Seguir ahora",
+                ig_sub: "Actualizaciones · Casos reales · Comunidad"
+            },
+            en: {
+                page_title: "NeoMonitor | Free Clinical Monitor Simulator — Neonatology, Pediatrics, ICU, Emergency",
+                meta_desc: "NeoMonitor is a free web app that turns any device into a high-fidelity vital signs monitor. For neonatologists, pediatricians, intensivists, emergency physicians and students. No registration. No cost. Made in Argentina.",
+                nav_how: "How it works",
+                nav_features: "Features",
+                nav_audience: "Who it's for",
+                nav_open: "Open App",
+                hero_badge: "100% FREE · MADE IN ARGENTINA",
+                hero_title: 'The monitor that was<br><span class="text-green-400 number-glow">missing</span><br>in simulation.',
+                hero_desc: "Turn any device into a high-fidelity vital signs monitor. For neonatologists, intensivists, pediatricians, emergency physicians and students. Free. No registration.",
+                hero_btn: "Start now — it's free",
+                stat_modes: "patient modes",
+                stat_langs: "languages",
+                stat_price: "forever",
+                audience_tag: "AUDIENCE",
+                audience_title: "A tool for all critical medicine",
+                audience_desc: "If you work with patients or study them, NeoMonitor is for you.",
+                aud_neo_title: "Neonatologists",
+                aud_neo_desc: "Neonatal resuscitation, CPR, PPV. The origin of the app.",
+                aud_ped_title: "Pediatricians",
+                aud_ped_desc: "Pediatric simulation with age-adjusted parameters.",
+                aud_med_title: "Clinicians",
+                aud_med_desc: "Adult scenarios for general clinical training.",
+                aud_int_title: "Intensivists",
+                aud_int_desc: "Pediatric and adult ICU. High-complexity critical cases.",
+                aud_emer_title: "Emergency Physicians",
+                aud_emer_desc: "Emergency scenarios with alarms and quick presets.",
+                aud_stu_title: "Medical Students",
+                aud_stu_desc: "Learn to read real monitors without expensive equipment.",
+                aud_nur_title: "Nursing",
+                aud_nur_desc: "Students, instructors and nursing schools. Monitor reading and alarm response.",
+                aud_teach_title: "Teachers & Instructors",
+                aud_teach_desc: "Formal and informal settings. No technical setup, no costs.",
+                setup_tag: "SETUP",
+                setup_title: "In 3 steps, ready to simulate",
+                step1_title: "Tablet / TV as monitor",
+                step1_desc: 'Open neomonitor.pro on a tablet or PC connected to the projector. Choose "Monitor Mode".',
+                step2_title: "Your phone as control",
+                step2_desc: 'From your phone, open the same site and choose "Control Mode". Everything in the same browser.',
+                step3_title: "Sync with QR!",
+                step3_desc: "Scan the QR code shown on the monitor with your phone's camera. You can also enter the 4-digit code manually.",
+                feat_tag: "FEATURES",
+                feat_title: "Everything you need for a real simulation",
+                feat1_title: "Real-time control",
+                feat1_desc: "HR and SpO₂ with smooth sliders. Soft and configurable transitions.",
+                feat2_title: "Priority alarms",
+                feat2_desc: "Visual and audio alarms to train the team's response to emergencies.",
+                feat3_title: "Presets & Clinical Cases",
+                feat3_desc: "Pre-configured scenarios: Normal, Desaturation, Grunt, PPV and more.",
+                feat4_title: "Integrated debriefing",
+                feat4_desc: "Feedback tool to close the educational loop.",
+                feat5_title: "3 languages",
+                feat5_desc: "Spanish, English and Portuguese. Ideal for international courses.",
+                cta_badge: "FREE · NO REGISTRATION · NO APP",
+                cta_title: "Try it right now.",
+                cta_desc: "Open the link on two devices and in 60 seconds you're already simulating.",
+                cta_platforms: "Works on iOS · Android · Web",
+                footer_tagline: "Made in Argentina by an Argentine doctor.",
+                ig_title: "Follow us on Instagram",
+                ig_desc: "Clinical cases, simulation tips and project updates.",
+                ig_btn: "Follow now",
+                ig_sub: "Updates · Real cases · Community"
+            },
+            pt: {
+                page_title: "NeoMonitor | Simulador de Monitor Clínico Gratuito — Neonatologia, Pediatria, UTI, Emergências",
+                meta_desc: "NeoMonitor é um app web gratuito que transforma qualquer dispositivo em um monitor de sinais vitais de alta fidelidade. Para neonatologistas, pediatras, intensivistas, emergencistas e estudantes. Sem cadastro. Sem custo. Feito na Argentina.",
+                nav_how: "Como funciona",
+                nav_features: "Características",
+                nav_audience: "Para quem",
+                nav_open: "Abrir App",
+                hero_badge: "100% GRATUITO · FEITO NA ARGENTINA",
+                hero_title: 'O monitor que<br><span class="text-green-400 number-glow">faltava</span><br>na simulação.',
+                hero_desc: "Transforme qualquer dispositivo em um monitor de sinais vitais de alta fidelidade. Para neonatologistas, intensivistas, pediatras, emergencistas e estudantes. Sem custo. Sem cadastro.",
+                hero_btn: "Começar agora — é gratuito",
+                stat_modes: "modos de paciente",
+                stat_langs: "idiomas",
+                stat_price: "para sempre",
+                audience_tag: "PÚBLICO",
+                audience_title: "Uma ferramenta para toda a medicina crítica",
+                audience_desc: "Se você trabalha com pacientes ou os estuda, o NeoMonitor é para você.",
+                aud_neo_title: "Neonatologistas",
+                aud_neo_desc: "Reanimação neonatal, RCP, VPP. A origem do app.",
+                aud_ped_title: "Pediatras",
+                aud_ped_desc: "Simulação pediátrica com parâmetros ajustados por idade.",
+                aud_med_title: "Clínicos Gerais",
+                aud_med_desc: "Cenários de adultos para treinamento clínico geral.",
+                aud_int_title: "Intensivistas",
+                aud_int_desc: "UTI pediátrica e adultos. Casos críticos de alta complexidade.",
+                aud_emer_title: "Emergencistas",
+                aud_emer_desc: "Cenários de emergência com alarmes e presets rápidos.",
+                aud_stu_title: "Estudantes de Medicina",
+                aud_stu_desc: "Aprenda a ler monitores reais sem equipamentos caros.",
+                aud_nur_title: "Enfermagem",
+                aud_nur_desc: "Alunos, docentes e escolas de enfermagem. Leitura de monitor e resposta a alarmes.",
+                aud_teach_title: "Docentes e Instrutores",
+                aud_teach_desc: "Ambientes formais e informais. Sem configuração técnica, sem custos.",
+                setup_tag: "CONFIGURAÇÃO",
+                setup_title: "Em 3 passos, pronto para simular",
+                step1_title: "Tablet / TV como monitor",
+                step1_desc: 'Abra neomonitor.pro em um tablet ou PC conectado ao projetor. Escolha "Modo Monitor".',
+                step2_title: "Seu celular como controle",
+                step2_desc: 'No seu telefone, abra o mesmo site e escolha "Modo Controle". Tudo no mesmo navegador.',
+                step3_title: "Sincronize com QR!",
+                step3_desc: "Escaneie o código QR que aparece no monitor com a câmera do seu celular. Você também pode inserir o código de 4 dígitos manualmente.",
+                feat_tag: "FUNCIONALIDADES",
+                feat_title: "Tudo que você precisa para uma simulação real",
+                feat1_title: "Controle em tempo real",
+                feat1_desc: "FC e SpO₂ com sliders fluidos. Transição suave e configurável.",
+                feat2_title: "Alarmes de prioridade",
+                feat2_desc: "Alarmes visuais e sonoros para treinar a resposta da equipe a emergências.",
+                feat3_title: "Presets e Casos Clínicos",
+                feat3_desc: "Cenários pré-configurados: Normal, Dessaturação, Gemido, VPP e mais.",
+                feat4_title: "Debriefing integrado",
+                feat4_desc: "Ferramenta de feedback para fechar o ciclo educativo.",
+                feat5_title: "3 idiomas",
+                feat5_desc: "Espanhol, Inglês e Português. Ideal para cursos internacionais.",
+                cta_badge: "GRATUITO · SEM CADASTRO · SEM APP",
+                cta_title: "Experimente agora mesmo.",
+                cta_desc: "Abra o link em dois dispositivos e em 60 segundos já está simulando.",
+                cta_platforms: "Funciona no iOS · Android · Web",
+                footer_tagline: "Feito na Argentina por um médico argentino.",
+                ig_title: "Siga-nos no Instagram",
+                ig_desc: "Casos clínicos, dicas de simulação e novidades do projeto.",
+                ig_btn: "Seguir agora",
+                ig_sub: "Atualizações · Casos reais · Comunidade"
+            }
+        };
+
+        function changeLanguage(lang) {
+            if (!translations[lang]) return;
+
+            // Meta tags
+            document.getElementById('page-title').innerText = translations[lang].page_title;
+            document.getElementById('meta-description').setAttribute('content', translations[lang].meta_desc);
+            document.documentElement.lang = lang;
+
+            // All translatable elements
+            document.querySelectorAll('[data-t]').forEach(el => {
+                const key = el.getAttribute('data-t');
+                if (translations[lang][key] !== undefined) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update button states
+            ['es', 'en', 'pt'].forEach(l => {
+                const btn = document.getElementById('btn-' + l);
+                if (l === lang) {
+                    btn.classList.add('lang-btn-active');
+                    btn.classList.remove('text-slate-500');
+                } else {
+                    btn.classList.remove('lang-btn-active');
+                    btn.classList.add('text-slate-500');
+                }
+            });
+
+            localStorage.setItem('neo_lang', lang);
+        }
+
+        // Video loop for first 3 seconds
         const heroVideo = document.getElementById('hero-video');
         heroVideo.addEventListener('timeupdate', function () {
             if (this.currentTime >= 3) {
                 this.currentTime = 0;
             }
         });
+
+        // Auto-detect language on load
+        window.onload = () => {
+            const saved = localStorage.getItem('neo_lang');
+            const browser = navigator.language.split('-')[0];
+            const lang = saved || (translations[browser] ? browser : 'es');
+            changeLanguage(lang);
+        };
     </script>
 </body>
 </html>
