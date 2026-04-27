@@ -168,7 +168,7 @@
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero NeoMonitor -->
     <header class="min-h-screen flex items-center pt-24 pb-12 px-6 relative grid-bg">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center w-full relative z-10">
 
@@ -218,6 +218,66 @@
                     <video id="hero-video" autoplay muted playsinline class="w-full h-auto block">
                         <source src="assets/Screen recording 2026-04-02 15.15.46.webm" type="video/webm">
                     </video>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Divisor -->
+    <section class="py-16 border-t border-b border-slate-800 bg-slate-900 text-center">
+        <div class="max-w-2xl mx-auto px-6">
+            <p class="text-slate-400 text-lg" data-t="hero_also">También tenemos...</p>
+        </div>
+    </section>
+
+    <!-- Hero NMrespi -->
+    <header class="min-h-screen flex items-center pt-24 pb-12 px-6 relative bg-slate-950">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center w-full relative z-10">
+
+            <!-- Left: Ventilator Screenshot -->
+            <div class="relative order-2 lg:order-1">
+                <div class="monitor-glow rounded-2xl border border-cyan-500/30 overflow-hidden shadow-2xl" style="box-shadow: 0 0 40px rgba(34, 211, 238, 0.2), 0 0 80px rgba(34, 211, 238, 0.05);">
+                    <img src="assets/Screenshot_20260401-212640.Chrome.png" alt="NMrespi Ventilator Simulator" class="w-full h-auto block rounded-xl">
+                </div>
+            </div>
+
+            <!-- Right -->
+            <div class="order-1 lg:order-2">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono font-bold mb-6 tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 blink"></span>
+                    <span data-t="nmrespi_badge">100% GRATUITO · VENTILACIÓN NEONATAL</span>
+                </div>
+
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6" data-t="nmrespi_hero_title">
+                    El simulador de<br>
+                    <span class="text-cyan-400 number-glow">ventilación</span><br>
+                    que necesitabas.
+                </h1>
+
+                <p class="text-slate-400 text-lg mb-8 leading-relaxed max-w-lg" data-t="nmrespi_hero_desc">
+                    Simulador de ventilación mecánica neonatal de alta fidelidad. Entrena modos ventilatorios, parámetros fisiológicos y respuesta pulmonar. Para neonatólogos, residentes, enfermería y estudiantes. Sin costo. Sin registro.
+                </p>
+
+                <div class="flex flex-wrap gap-4 mb-10">
+                    <a href="https://www.ventilator-sim.web.app" class="px-8 py-4 bg-cyan-500 text-slate-950 rounded-xl font-bold text-lg hover:bg-cyan-400 transition shadow-lg" style="box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);" data-t="nmrespi_btn">
+                        <i class="fa-solid fa-play text-sm"></i> <span data-t="nmrespi_btn_text">Abrir simulador</span>
+                    </a>
+                </div>
+
+                <!-- Stats -->
+                <div class="flex gap-8 text-sm">
+                    <div>
+                        <div class="font-mono text-2xl font-bold text-cyan-400 number-glow">5+</div>
+                        <div class="text-slate-500 text-xs mt-1" data-t="nmrespi_stat_modes">modos ventilatorios</div>
+                    </div>
+                    <div class="border-l border-slate-800 pl-8">
+                        <div class="font-mono text-2xl font-bold text-blue-400 number-glow">3</div>
+                        <div class="text-slate-500 text-xs mt-1" data-t="stat_langs">idiomas</div>
+                    </div>
+                    <div class="border-l border-slate-800 pl-8">
+                        <div class="font-mono text-2xl font-bold text-cyan-400 number-glow">$0</div>
+                        <div class="text-slate-500 text-xs mt-1" data-t="stat_price">para siempre</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -476,7 +536,14 @@
                 ig_title: "Seguinos en Instagram",
                 ig_desc: "Casos clínicos, tips de simulación y novedades del proyecto.",
                 ig_btn: "Seguir ahora",
-                ig_sub: "Actualizaciones · Casos reales · Comunidad"
+                ig_sub: "Actualizaciones · Casos reales · Comunidad",
+                hero_also: "También tenemos...",
+                nmrespi_badge: "100% GRATUITO · VENTILACIÓN NEONATAL",
+                nmrespi_hero_title: 'El simulador de<br><span class="text-cyan-400 number-glow">ventilación</span><br>que necesitabas.',
+                nmrespi_hero_desc: "Simulador de ventilación mecánica neonatal de alta fidelidad. Entrena modos ventilatorios, parámetros fisiológicos y respuesta pulmonar. Para neonatólogos, residentes, enfermería y estudiantes. Sin costo. Sin registro.",
+                nmrespi_btn: "Abrir simulador",
+                nmrespi_btn_text: "Abrir simulador",
+                nmrespi_stat_modes: "modos ventilatorios"
             },
             en: {
                 page_title: "NeoMonitor | Free Clinical Monitor Simulator — Neonatology, Pediatrics, ICU, Emergency",
@@ -539,7 +606,14 @@
                 ig_title: "Follow us on Instagram",
                 ig_desc: "Clinical cases, simulation tips and project updates.",
                 ig_btn: "Follow now",
-                ig_sub: "Updates · Real cases · Community"
+                ig_sub: "Updates · Real cases · Community",
+                hero_also: "We also have...",
+                nmrespi_badge: "100% FREE · NEONATAL VENTILATION",
+                nmrespi_hero_title: 'The ventilation<br><span class="text-cyan-400 number-glow">simulator</span><br>you needed.',
+                nmrespi_hero_desc: "High-fidelity neonatal mechanical ventilation simulator. Train ventilatory modes, physiological parameters and pulmonary response. For neonatologists, residents, nursing and students. Free. No registration.",
+                nmrespi_btn: "Open simulator",
+                nmrespi_btn_text: "Open simulator",
+                nmrespi_stat_modes: "ventilatory modes"
             },
             pt: {
                 page_title: "NeoMonitor | Simulador de Monitor Clínico Gratuito — Neonatologia, Pediatria, UTI, Emergências",
@@ -602,7 +676,14 @@
                 ig_title: "Siga-nos no Instagram",
                 ig_desc: "Casos clínicos, dicas de simulação e novidades do projeto.",
                 ig_btn: "Seguir agora",
-                ig_sub: "Atualizações · Casos reais · Comunidade"
+                ig_sub: "Atualizações · Casos reais · Comunidade",
+                hero_also: "Também temos...",
+                nmrespi_badge: "100% GRATUITO · VENTILAÇÃO NEONATAL",
+                nmrespi_hero_title: 'O simulador de<br><span class="text-cyan-400 number-glow">ventilação</span><br>que você precisava.',
+                nmrespi_hero_desc: "Simulador de ventilação mecânica neonatal de alta fidelidade. Treine modos ventilatórios, parâmetros fisiológicos e resposta pulmonar. Para neonatologistas, residentes, enfermagem e estudantes. Sem custo. Sem cadastro.",
+                nmrespi_btn: "Abrir simulador",
+                nmrespi_btn_text: "Abrir simulador",
+                nmrespi_stat_modes: "modos ventilatórios"
             }
         };
 
